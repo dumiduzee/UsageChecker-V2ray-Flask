@@ -1,0 +1,132 @@
+/* Base styles for mobile devices */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+    font-size: 16px;
+    background-color: #1a212a;
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+*{
+    font-family: "Poppins", sans-serif;
+}
+
+
+.container {
+    width: 90%;
+    max-width: 550px;
+    margin: 0 auto;
+    padding: 10px;
+    border: 1px solid rgba(36,44,58,255);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+h1 {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 1.6em;
+}
+
+p {
+    font-size: 0.8em;
+    margin-top: 10px;
+}
+
+.green-border {
+    background-color: #112123;
+    border: 1px solid #2c9a95;
+    color: #2c9a95;
+    padding: 1px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.status {
+    padding: 1px;
+    border: 1px solid;
+    border-radius: 5px;
+}
+
+.status.online {
+    background-color: #111d2c;
+    color: #3c9ae8;
+    border-color: #3c9ae8;
+}
+
+.status.offline {
+    background-color: #2a1215;
+    color: red;
+    border-color: red;
+}
+
+.usage {
+    padding: 1px;
+    border: 1px solid;
+    border-radius: 5px;
+}
+
+.usage.offline {
+    background-color: #112123;
+    color: #2c9a95;
+    border-color: #2c9a95;
+}
+
+.usage.online {
+    background-color: #2a1215;
+    color: red;
+    border-color: red;
+}
+
+.expiry {
+    padding: 1px;
+    border: 1px solid;
+    border-radius: 5px;
+}
+
+.expiry.valid {
+    background-color: #112123;
+    color: #2c9a95;
+    border-color: #2c9a95;
+}
+
+.expiry.expired {
+    background-color: #2a1215;
+    color: red;
+    border-color: red;
+}
+
+a {
+    text-decoration: none;
+    color: #2c9a95;
+}
+
+/* Media queries for larger screens */
+@media (min-width: 768px) {
+    body {
+        font-size: 17px;
+    }
+
+    .container {
+        border-radius: 20px;
+    }
+
+    h1 {
+        margin: 30px 0;
+    }
+
+    p {
+        font-size: 0.8em;
+    }
+}
+
+@media (min-width: 992px) {
+    body {
+        font-size: 20px;
+    }
+}

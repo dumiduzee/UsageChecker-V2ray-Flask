@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bandwidth Usage</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Welcome, {{ username }}! Here is your v2ray config details</h1>
+    <div class="container">
+        {% if data.error %}
+            <p>{{ data.error }}</p>
+        {% else %}
+            <p>Status: <span class="status {{ 'online' if data.status == 'config online' else 'offline' }}">{{ data.status }}</span></p>
+            <p>Used/Total Bandwidth: <span class="usage {{ 'online' if data.used_gb >= data.total_gb else 'offline' }}">{{ data.display }}</span></p>
+            {% if data.remaining is not none %}
+                <p>Remaining: <span class="green-border">{{ data.remaining }}</span></p>
+            {% endif %}
+            <p>Upload/Download: <span class="green-border">{{ data.upload_download }}</span></p>
+            {% if data.percentage is not none %}
+                <p>Percentage Used: <span class="green-border">{{ data.percentage|round(2) }}%</span></p>
+            {% endif %}
+            <p>Expire Date and Time: 
+                <span class="expiry {{ data.expiry_status }}">
+                    {{ data.expiry_time_display }}
+                </span>
+            </p>
+            {% if data.enable == 0 %}
+            <p>{{ data.contact_user }} <a href="data.admin_link1" target="_blank">UnKnOwN</a></p>
+            {% endif %}
+        {% endif %}
+    </div>
+</body>
+</html>
