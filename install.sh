@@ -79,7 +79,7 @@ unzip $APP_DIR/flask_app.zip -d $APP_DIR
 rm $APP_DIR/flask_app.zip
 
 # Navigate to the correct directory
-cd $APP_DIR/newTester-0.2  # Adjust according to the structure of the extracted files
+cd $APP_DIR/newTester-0.3  # Adjust according to the structure of the extracted files
 
 # Create and activate a virtual environment
 python3 -m venv venv
