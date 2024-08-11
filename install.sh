@@ -14,7 +14,7 @@ is_valid_port() {
 
 # Prompt the user for the port number
 while true; do
-  read -p "Enter the port number to run the Flask app: " PORT
+  read -p "Enter the port number [Must be not busy]: " PORT
 
   if ! is_valid_port "$PORT"; then
     echo "Invalid port number. Please enter a number between 1 and 65535."
