@@ -1,5 +1,6 @@
 #!/bin/bash
 cur_dir=$(pwd)
+
 # Function to check if a port is in use
 is_port_in_use() {
   sudo lsof -i -P -n | grep ":$1 " > /dev/null
@@ -26,7 +27,7 @@ done
 
 # Install necessary packages
 sudo apt-get update
-sudo apt-get install -y python3 python3-pip python3-venv lsof curl unzip
+sudo apt-get install -y python3 python3-pip python3-venv lsof curl unzip supervisor
 
 # Define the URL of the repository or zip file containing the Flask app
 REPO_URL="https://github.com/dumiduzee/newTester/archive/refs/tags/v0.1.zip"
@@ -43,9 +44,6 @@ rm $APP_DIR/flask_app.zip
 
 # Navigate to the correct directory
 cd $APP_DIR/newTester-0.1  # Adjust according to the structure of the extracted files
-pip install -r requirements.txt
-# Update the app.py file with the user-provided port
-sed -i "s/5000/$PORT/" app.py
 
 # Create and activate a virtual environment
 python3 -m venv venv
@@ -53,28 +51,29 @@ source venv/bin/activate
 
 # Install the required Python packages
 pip install -r requirements.txt
+pip install gunicorn  # Install Gunicorn
 
-# Make sure Flask app runs on startup
-sudo tee /etc/systemd/system/flaskapp.service > /dev/null <<EOL
-[Unit]
-Description=Flask Application
+# Update the app.py file with the user-provided port
+sed -i "s/5000/$PORT/" app.py
 
-[Service]
-User=$USER
-WorkingDirectory=$(pwd)
-Environment="PATH=$(pwd)/venv/bin"
-ExecStart=$(pwd)/venv/bin/python3 app.py
-
-[Install]
-WantedBy=multi-user.target
+# Create Supervisor configuration file for the Flask app
+sudo tee /etc/supervisor/conf.d/flaskapp.conf > /dev/null <<EOL
+[program:flaskapp]
+command=$(pwd)/venv/bin/gunicorn --workers 3 --bind 0.0.0.0:$PORT app:app
+directory=$(pwd)
+user=$USER
+autostart=true
+autorestart=true
+stdout_logfile=/var/log/flaskapp.log
+stderr_logfile=/var/log/flaskapp.err.log
 EOL
 
-# Start and enable the Flask app service
-sudo systemctl daemon-reload
-sudo systemctl start flaskapp.service
-sudo systemctl enable flaskapp.service
+# Update Supervisor and start the Flask app
+sudo supervisorctl reread
+sudo supervisorctl update
+sudo supervisorctl start flaskapp
 
 # Get the VPS IP address
 VPS_IP=$(curl -s ifconfig.me)
 
-echo "Flask app has been installed. You can access it at http://$VPS_IP:$PORT"
+echo "Flask app has been installed and is running. You can access it at http://$VPS_IP:$PORT"
