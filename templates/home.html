@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flask Client App</title>
+    <title>Zeuslk V2ray Usage Checker</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
 </head>
 <body>
     <div class="container">
-        <h1>Welcome to the UnKnOwN tunneling client portal!</h1>
+        <h1>Welcome to the ZeusLk tunneling client portal!</h1>
         <p>Please enter your username to view your v2ray config details.</p>
         <form action="{{ url_for('index', username='dummy') }}" method="GET" id="usernameForm">
             <input placeholder="Enter Username" type="text" id="username" name="username" required>
