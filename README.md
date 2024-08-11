@@ -3,5 +3,5 @@
 ## Install & Upgrade
 
 ```
-bash <(curl -Ls https://raw.githubusercontent.com/dumiduzee/newTester/main/install.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/dumiduzee/UsageChecker-V2ray-Flask/main/install.sh)
 ```
