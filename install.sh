@@ -43,7 +43,7 @@ rm $APP_DIR/flask_app.zip
 
 # Navigate to the correct directory
 cd $APP_DIR/newTester-0.1  # Adjust according to the structure of the extracted files
-
+pip install -r requirements.txt
 # Update the app.py file with the user-provided port
 sed -i "s/5000/$PORT/" app.py
 
