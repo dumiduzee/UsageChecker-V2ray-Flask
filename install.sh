@@ -42,7 +42,7 @@ unzip $APP_DIR/flask_app.zip -d $APP_DIR
 rm $APP_DIR/flask_app.zip
 
 # Navigate to the correct directory
-cd $APP_DIR/3x-ui-client-portal-0.1  # Adjust according to the structure of the extracted files
+cd $APP_DIR/newTester-0.1  # Adjust according to the structure of the extracted files
 
 # Update the app.py file with the user-provided port
 sed -i "s/5000/$PORT/" app.py
