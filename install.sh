@@ -29,7 +29,8 @@ sudo apt-get update
 sudo apt-get install -y python3 python3-pip python3-venv lsof curl unzip
 
 # Define the URL of the repository or zip file containing the Flask app
-REPO_URL="https://github.com/KingAshi/3x-ui-client-portal/archive/refs/tags/v0.1.zip"
+REPO_URL="https://github.com/dumiduzee/newTester/archive/refs/tags/v0.1.zip"
+
 APP_DIR="flask_app"
 
 # Create the directory for the Flask app files
