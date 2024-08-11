@@ -30,7 +30,7 @@ sudo apt-get update
 sudo apt-get install -y python3 python3-pip python3-venv lsof curl unzip supervisor
 
 # Define the URL of the repository or zip file containing the Flask app
-REPO_URL="https://github.com/dumiduzee/newTester/archive/refs/tags/v0.1.zip"
+REPO_URL="https://github.com/dumiduzee/newTester/archive/refs/tags/v0.2.zip"
 
 APP_DIR="flask_app"
 
@@ -43,7 +43,7 @@ unzip $APP_DIR/flask_app.zip -d $APP_DIR
 rm $APP_DIR/flask_app.zip
 
 # Navigate to the correct directory
-cd $APP_DIR/newTester-0.1  # Adjust according to the structure of the extracted files
+cd $APP_DIR/newTester-0.2  # Adjust according to the structure of the extracted files
 
 # Create and activate a virtual environment
 python3 -m venv venv
